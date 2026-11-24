@@ -76,3 +76,17 @@ baseline=[train["class"].mode()[0]]*len(test)
 evaluate("Majority baseline", baseline)
 
 # SYSTEM 1: HANDWRITTEN RULES (IF-ELSE)
+
+def handwritten(car):
+    if car["safety"]=="low":
+        return "unacc"
+
+    if car["persons"]=="2":
+        return "unacc"
+
+    if car(["buying"], car["maintenance"]) in [("vhigh", "vhigh"), ("vhigh","high"), ("high", "vhigh")]:
+        return "unacc"
+
+    if car["safety"] == "med" and car["lug_boot"]=="small":
+        return "unacc"
+
